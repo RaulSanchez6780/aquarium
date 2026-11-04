@@ -44,33 +44,37 @@ public class Aquarium {
     public static void drawCrab(PainterAPI painter, int x, int y){
 
     }
-     public static void main(String[] args) {
- CanvasAPI canvas = Graphics.createCanvas(800, 600, "My First Drawing");
 
- PainterAPI painter = canvas.getPainter();
- painter.setSpeed(0); // Lower number means faster, zero means as fast as possible.
+    public static void drawGround(PainterAPI painter){
+        painter.liftPen();
+        painter.moveTo(-400, -100);
+        painter.lowerPen();
+        painter.startFill(new Color(209, 196, 113));
+        for (int i = 0; i < 2; i++) {
+            painter.forward(800);
+            painter.turnRight(90);
+            painter.forward(200);
+            painter.turnRight(90);
+        }
+        painter.finishFill();
+        }
 
- // Bubbles
- drawBubble(painter, 325, 50, 1);
- drawBubble(painter, 360, 150, .75);
- drawBubble(painter, 325, 220, .5);
- drawBubble(painter, -325, 50, 1);
- drawBubble(painter, -360, 150, .75);
- drawBubble(painter, -325, 220, .5);
+        public static void main(String[] args) {
+    CanvasAPI canvas = Graphics.createCanvas(800, 600, "My First Drawing");
+    canvas.setBackgroundColor(new Color(117, 202, 255));
+    PainterAPI painter = canvas.getPainter();
+    painter.setSpeed(0); // Lower number means faster, zero means as fast as possible.
 
- // Ground
- painter.liftPen();
- painter.moveTo(-400, -100);
- painter.lowerPen();
- painter.startFill(new Color(209, 196, 113));
- painter.forward(800);
- painter.turnRight(90);
- painter.forward(200);
- painter.turnRight(90);
- painter.forward(800);
- painter.turnRight(90);
- painter.forward(200);
- painter.finishFill();
+    // Bubbles
+    drawBubble(painter, 325, 50, 1);
+    drawBubble(painter, 360, 150, .75);
+    drawBubble(painter, 325, 220, .5);
+    drawBubble(painter, -325, 50, 1);
+    drawBubble(painter, -360, 150, .75);
+    drawBubble(painter, -325, 220, .5);
+
+    // Ground
+    drawGround(painter);
 
  // Fish
  }
